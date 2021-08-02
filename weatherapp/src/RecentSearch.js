@@ -10,6 +10,6 @@ export default function RecentSearch({ recentData, setNewZip }) {
             onClick={() => setNewZip(zip)}
         >
             {city} {zip}   {degrees}
-        </div>
+        </div>  
     )
 }
