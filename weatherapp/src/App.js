@@ -38,7 +38,7 @@ export default function App() {
     if (currentZip < 5) {
       return
     }
-
+    setError('')
     setTheWeather(null)
     setZip('');
     setNewZip('');
@@ -46,7 +46,7 @@ export default function App() {
     const units = 'imperial';
 
     try {
-      const res = await fetch(`http://api.openweathermap.org/data/2.5/weather?appid=${apiKey}&zip=${currentZip}&units=${units}`)
+      const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}&zip=${currentZip}&units=${units}`)
 
       if (!res.ok) {
         setError('Something went wrong');
@@ -69,7 +69,7 @@ export default function App() {
       setTheWeather({
         city: weatherData.name,
         state: placeData.places[0].state,
-        icon: `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`,
+        icon: `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`,
         degrees: `${weatherData.main.temp.toString().split('.')[0]}°`,
         description: `${weatherData.weather[0].description}`
       });
@@ -82,7 +82,7 @@ export default function App() {
     <div className="App">
       <h1>React Weather App</h1>
       <p className="app-description">This Weather App uses Html, CSS, Javascript and the REACT framework
-       with multiple API's to get the data and the ability to view recent searches</p>
+       with multiple API's to get the data, and has the ability to view recent searches</p>
       <form onSubmit={getWeather}>
         <input
           className="search-input"
